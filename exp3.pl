@@ -1,4 +1,6 @@
 % Main predicate to solve the problem
+
+% command to run =   find_all_solutions.
 eight_queens(Solution) :-
     Solution = [_Q1, _Q2, _Q3, _Q4, _Q5, _Q6, _Q7, _Q8],
     permutation([1, 2, 3, 4, 5, 6, 7, 8], Solution),
