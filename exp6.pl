@@ -54,14 +54,21 @@ bfs([[Goal, Path, _]|_], FinalPath) :-
     reverse([Goal|Path], FinalPath).
 
 bfs([[State, Path, _]|Rest], FinalPath) :-
-    findall([NextState, [State|Path], H],
-        (move(State, NextState),
-         \+ member(NextState, Path),
-         manhattan(NextState, H)),
-        Children),
+    findall(
+        [NextState, [State|Path], H],
+        (
+            move(State, NextState),
+            \+ member(NextState, Path),
+            manhattan(NextState, H)
+        ),
+        Children
+    ),
+    write('Children: '), write(Children), nl,
     append(Rest, Children, OpenList),
+    write('OpenList: '), write(OpenList), nl,
     sort(3, @=<, OpenList, SortedOpenList),
     bfs(SortedOpenList, FinalPath).
+
 
 % Example run to solve the 8-puzzle
 solve(Start) :-
