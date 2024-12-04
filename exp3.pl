@@ -1,6 +1,6 @@
 % Main predicate to solve the problem
 eight_queens(Solution) :-
-    Solution = [Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8],
+    Solution = [_Q1, _Q2, _Q3, _Q4, _Q5, _Q6, _Q7, _Q8],
     permutation([1, 2, 3, 4, 5, 6, 7, 8], Solution),
     safe(Solution).
 
@@ -23,5 +23,6 @@ find_all_solutions :-
     write(Solution), nl,
     fail. % Force backtracking to get all solutions
 
-% Stop the program when finished
-find_all_solutions :- halt.
+% Stop the program gracefully
+find_all_solutions :- 
+    write('All solutions found.'), nl.
